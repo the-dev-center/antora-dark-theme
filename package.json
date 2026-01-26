@@ -1,0 +1,31 @@
+{
+  "name": "antora-dark-theme",
+  "version": "1.0.0",
+  "description": "Dark mode supplemental UI theme for Antora documentation sites",
+  "keywords": [
+    "antora",
+    "dark-mode",
+    "theme",
+    "documentation",
+    "asciidoc"
+  ],
+  "homepage": "https://github.com/the-dev-center/antora-dark-theme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-dev-center/antora-dark-theme.git"
+  },
+  "license": "MIT",
+  "author": "The Dev Center",
+  "files": [
+    "supplemental-ui/**/*"
+  ],
+  "scripts": {
+    "build": "antora examples/antora-playbook.yml",
+    "build:local": "antora examples/antora-playbook-local.yml",
+    "preview": "antora --fetch examples/antora-playbook.yml"
+  },
+  "devDependencies": {
+    "antora": "^3.1.14"
+  },
+  "packageManager": "pnpm@10.28.1"
+}

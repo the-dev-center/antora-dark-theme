@@ -1,0 +1,22 @@
+# Build output
+build/
+public/
+
+# Dependencies
+node_modules/
+
+# Package manager files
+.pnpm-store/
+
+# IDE files
+.idea/
+.vscode/
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

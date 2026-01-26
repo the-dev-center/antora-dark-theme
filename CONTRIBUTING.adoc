@@ -1,0 +1,106 @@
+= Contributing to Antora Dark Theme
+
+Thank you for your interest in contributing to this project!
+This document provides guidelines and information for contributors.
+
+== Getting Started
+
+=== Prerequisites
+
+* Node.js 18 or later
+* pnpm (recommended) or npm
+* Git
+
+=== Setting Up the Development Environment
+
+. Clone the repository:
++
+[source,bash]
+----
+git clone https://github.com/the-dev-center/antora-dark-theme.git
+cd antora-dark-theme
+----
+
+. Install dependencies:
++
+[source,bash]
+----
+pnpm install
+----
+
+. Create a test Antora project or use the example playbook to test your changes.
+
+== Making Changes
+
+=== Code Style
+
+* Use 2-space indentation for CSS, JavaScript, and YAML files
+* Use meaningful variable and function names
+* Add comments for complex logic
+* Keep CSS selectors organized by component/area
+
+=== Testing Your Changes
+
+Before submitting a pull request, test your changes:
+
+. Create a simple Antora documentation project
+. Point its playbook to your modified `supplemental-ui` folder
+. Build the site and verify:
+** Dark mode toggle appears in the navbar
+** Clicking the toggle switches themes
+** Theme preference persists across page reloads
+** No styling issues in both light and dark modes
+
+== Submitting Changes
+
+=== Pull Request Process
+
+. Create a feature branch from `main`:
++
+[source,bash]
+----
+git checkout -b feature/your-feature-name
+----
+
+. Make your changes and commit with clear messages:
++
+[source,bash]
+----
+git commit -m "Add support for X component styling"
+----
+
+. Push your branch:
++
+[source,bash]
+----
+git push origin feature/your-feature-name
+----
+
+. Open a pull request on GitHub
+
+=== Commit Message Guidelines
+
+* Use the present tense ("Add feature" not "Added feature")
+* Use the imperative mood ("Move cursor to..." not "Moves cursor to...")
+* Keep the first line under 72 characters
+* Reference issues when applicable ("Fix #123: Correct navbar color")
+
+== Reporting Issues
+
+When reporting issues, please include:
+
+* Browser and version
+* Antora version
+* Steps to reproduce the issue
+* Screenshots if applicable
+* Any error messages from the console
+
+== Code of Conduct
+
+* Be respectful and inclusive
+* Provide constructive feedback
+* Focus on the issue, not the person
+
+== Questions?
+
+Feel free to open an issue for any questions about contributing.

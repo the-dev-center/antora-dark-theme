@@ -1,0 +1,294 @@
+= Antora Dark Theme
+:toc: macro
+:toc-title: Contents
+:toclevels: 3
+:icons: font
+:source-highlighter: highlight.js
+:url-antora: https://antora.org
+:url-antora-ui: https://gitlab.com/antora/antora-ui-default
+
+A dark mode supplemental UI theme for {url-antora}[Antora] documentation sites.
+This theme layers on top of the {url-antora-ui}[Antora Default UI] without requiring modifications to the base UI bundle.
+
+image::https://img.shields.io/badge/license-MIT-blue.svg[License: MIT]
+image::https://img.shields.io/badge/antora-3.x-purple.svg[Antora 3.x]
+
+toc::[]
+
+== Features
+
+* **Dark mode toggle** - A sun/moon icon button in the navbar that switches between light and dark themes
+* **System preference detection** - Automatically applies dark mode if the user's OS is set to dark mode
+* **Persistent preference** - Remembers the user's choice via `localStorage`
+* **No FOUC (Flash of Unstyled Content)** - Dark mode is applied before page render via inline script
+* **Non-invasive** - Works as a supplemental UI overlay; no need to fork or rebuild the Antora default UI bundle
+* **Comprehensive styling** - Covers navbar, navigation panels, content area, code blocks, tables, admonition blocks, footer, and more
+
+== Quick Start
+
+=== Method 1: Copy supplemental-ui folder
+
+The simplest approach is to copy the `supplemental-ui` folder into your Antora documentation project.
+
+. Copy the `supplemental-ui` folder to your project root:
++
+[source,bash]
+----
+cp -r supplemental-ui /path/to/your/antora-project/
+----
+
+. Configure your `antora-playbook.yml` to use the supplemental files:
++
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+----
+
+. Build your site:
++
+[source,bash]
+----
+antora antora-playbook.yml
+----
+
+=== Method 2: Use as npm dependency
+
+You can also install this theme as a dev dependency:
+
+[source,bash]
+----
+pnpm add -D antora-dark-theme
+# or
+npm install --save-dev antora-dark-theme
+----
+
+Then reference the supplemental UI from `node_modules`:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
+----
+
+== File Structure
+
+[source]
+----
+antora-dark-theme/
+├── supplemental-ui/
+│   ├── css/
+│   │   └── site-extra.css      # Dark mode CSS styles
+│   ├── js/
+│   │   └── site-dark-mode.js   # Toggle button logic and theme management
+│   └── partials/
+│       ├── footer-scripts.hbs  # Loads the dark mode script
+│       └── head-meta.hbs       # Loads CSS and prevents FOUC
+├── examples/
+│   ├── antora-playbook.yml     # Example playbook configuration
+│   └── antora-playbook-local.yml
+├── package.json
+├── LICENSE
+└── README.adoc
+----
+
+== How It Works
+
+This theme uses Antora's supplemental UI feature to overlay additional files onto the default UI bundle.
+The approach involves four key files:
+
+=== 1. head-meta.hbs (Prevents Flash of Unstyled Content)
+
+This Handlebars partial is injected into the `<head>` of every page.
+It does two things:
+
+* Loads the `site-extra.css` stylesheet
+* Runs a tiny inline script that immediately applies the `dark-theme` class if the user previously selected dark mode or if their OS prefers dark mode
+
+This prevents the brief flash of light mode before the main JavaScript loads.
+
+[source,handlebars]
+----
+<link rel="stylesheet" href="{{{uiRootPath}}}/css/site-extra.css">
+<script>
+(function () {
+  const themeKey = 'antora-theme';
+  const savedTheme = localStorage.getItem(themeKey);
+  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark-theme');
+  }
+})();
+</script>
+----
+
+=== 2. footer-scripts.hbs (Loads the Toggle Script)
+
+This partial is injected at the end of the page body.
+It loads the main site script, highlight.js, and the dark mode toggle script.
+
+=== 3. site-dark-mode.js (Theme Toggle Logic)
+
+This JavaScript module:
+
+* Injects a toggle button into the navbar (`.navbar-end`)
+* Handles click events to switch between light and dark themes
+* Persists the user's preference in `localStorage` under the key `antora-theme`
+* Updates the button icon (sun for dark mode, moon for light mode)
+* Respects the user's OS preference if no saved preference exists
+
+=== 4. site-extra.css (Dark Mode Styles)
+
+The CSS file contains all dark mode styles using the selector prefix `html.dark-theme`.
+This explicit selector approach works because the Antora default UI's compiled CSS doesn't rely on CSS custom properties (variables) for theming.
+
+== Customization
+
+=== Changing Colors
+
+Edit `supplemental-ui/css/site-extra.css` to customize the color palette.
+The current theme uses these primary colors:
+
+[cols="1,2,3", options="header"]
+|===
+| Variable | Value | Usage
+
+| Background (main)
+| `#1a1b1e`
+| Page body background
+
+| Background (elevated)
+| `#25262b`
+| Sidebar, navigation panels, blocks
+
+| Background (navbar)
+| `#141517`
+| Top navigation bar
+
+| Text (primary)
+| `#c1c2c5`
+| Main body text
+
+| Text (headings)
+| `#ffffff`
+| Headings and titles
+
+| Link color
+| `#4dabf7`
+| Hyperlinks
+
+| Link hover
+| `#74c0fc`
+| Hovered hyperlinks
+
+| Border color
+| `#373a40`
+| Dividers and borders
+|===
+
+=== Adding More Styles
+
+To style additional elements not covered by the default theme, add new selectors prefixed with `html.dark-theme`:
+
+[source,css]
+----
+html.dark-theme .my-custom-element {
+  background-color: #25262b;
+  color: #c1c2c5;
+}
+----
+
+=== Changing the Toggle Button Position
+
+By default, the toggle button is inserted at the beginning of `.navbar-end`.
+To change its position, modify the `ensureToggleButton()` function in `site-dark-mode.js`:
+
+[source,javascript]
+----
+// Insert at the end instead of the beginning
+navbarEnd.appendChild(button);
+----
+
+=== Using a Custom Toggle Button
+
+If you want to use your own toggle button markup, add an element with `id="theme-toggle"` anywhere in your page.
+The script will detect it and attach the click handler automatically.
+
+== Browser Support
+
+This theme supports all modern browsers:
+
+* Chrome/Edge (latest)
+* Firefox (latest)
+* Safari (latest)
+* Opera (latest)
+
+The theme uses standard CSS and JavaScript that works in all browsers supporting:
+
+* `localStorage`
+* `classList`
+* `matchMedia`
+
+== Compatibility
+
+[cols="1,2", options="header"]
+|===
+| Component | Version
+
+| Antora
+| 3.x
+
+| Antora Default UI
+| Any version (HEAD recommended)
+
+| Node.js
+| 18+
+|===
+
+== Troubleshooting
+
+=== Dark mode doesn't persist
+
+Make sure `localStorage` is available and not blocked by browser settings or extensions.
+Check the browser console for errors.
+
+=== Toggle button doesn't appear
+
+The toggle button is injected into `.navbar-end`.
+If your UI bundle has a different structure, you may need to modify the selector in `site-dark-mode.js`.
+
+=== Flash of light mode on page load
+
+Ensure `head-meta.hbs` is being loaded correctly.
+Check that the inline script isn't being blocked by a Content Security Policy.
+
+=== Some elements aren't styled
+
+The CSS covers the most common Antora elements.
+If you find unstyled elements, add selectors for them in `site-extra.css` with the `html.dark-theme` prefix.
+
+== Contributing
+
+Contributions are welcome!
+Please feel free to submit issues and pull requests.
+
+. Fork the repository
+. Create a feature branch: `git checkout -b feature/my-feature`
+. Commit your changes: `git commit -m "Add my feature"`
+. Push to the branch: `git push origin feature/my-feature`
+. Open a pull request
+
+== License
+
+This project is licensed under the MIT License.
+See the link:LICENSE[LICENSE] file for details.
+
+== Acknowledgments
+
+* The {url-antora}[Antora] team for creating an excellent documentation site generator
+* The {url-antora-ui}[Antora Default UI] which this theme extends

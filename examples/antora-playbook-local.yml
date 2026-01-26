@@ -1,0 +1,22 @@
+# Local Development Playbook
+# Use this for local development without fetching from remote Git repositories
+
+site:
+  title: My Documentation Site (Local)
+  # start_page: component-name::index.adoc
+
+content:
+  sources:
+    # Point directly to local filesystem paths for faster iteration
+    - url: ../path-to-your-docs
+      branches: HEAD
+      start_path: docs
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+
+output:
+  dir: ./build/site

@@ -1,0 +1,38 @@
+# Example Antora Playbook with Dark Theme
+# Copy this file to your documentation project root and customize as needed
+
+site:
+  title: My Documentation Site
+  # Uncomment to set a start page:
+  # start_page: component-name::index.adoc
+
+content:
+  sources:
+    # Example: Local documentation source
+    - url: .
+      branches: HEAD
+      start_path: docs
+    # Example: Remote Git repository
+    # - url: https://github.com/your-org/your-repo.git
+    #   branches: [main, v*]
+    #   start_path: docs
+
+ui:
+  bundle:
+    # Use the official Antora default UI bundle
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  # Point to your local copy of the supplemental-ui folder
+  supplemental_files: ./supplemental-ui
+
+# Optional: Configure output directory
+output:
+  dir: ./build/site
+
+# Optional: Configure asciidoc extensions
+asciidoc:
+  attributes:
+    # Enable source highlighting
+    source-highlighter: highlight.js
+    # Add custom attributes here
+    # my-attribute: value

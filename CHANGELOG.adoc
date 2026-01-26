@@ -1,0 +1,27 @@
+= Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on https://keepachangelog.com/en/1.1.0/[Keep a Changelog],
+and this project adheres to https://semver.org/spec/v2.0.0.html[Semantic Versioning].
+
+== [1.0.0] - 2026-01-26
+
+=== Added
+
+* Initial release
+* Dark mode toggle button with sun/moon icons
+* Comprehensive CSS styling for Antora default UI components:
+** Navbar and navigation panels
+** Content area and documentation
+** Code blocks and syntax highlighting containers
+** Tables
+** Admonition blocks (NOTE, TIP, WARNING, etc.)
+** Sidebar and table of contents
+** Footer
+** Search input
+* System preference detection (`prefers-color-scheme: dark`)
+* Persistent theme preference via `localStorage`
+* FOUC (Flash of Unstyled Content) prevention
+* Example Antora playbook configurations
+* Full documentation with customization guide
