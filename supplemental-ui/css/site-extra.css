@@ -133,6 +133,89 @@ html.dark-theme pre code {
   border-color: #373a40;
 }
 
+/* Code blocks - more specific selectors for Antora */
+html.dark-theme .doc code,
+html.dark-theme .doc pre,
+html.dark-theme .doc .listingblock pre,
+html.dark-theme .doc .listingblock pre.highlight,
+html.dark-theme .doc .listingblock pre.highlight code,
+html.dark-theme .doc .literalblock pre,
+html.dark-theme .doc pre.content,
+html.dark-theme .doc pre.pygments,
+html.dark-theme .doc pre.rouge,
+html.dark-theme .doc pre.CodeMirror,
+html.dark-theme .doc .highlight pre,
+html.dark-theme .doc .highlight code {
+  background-color: #141517 !important;
+  color: #e9ecef;
+  border-color: #373a40;
+}
+
+html.dark-theme .doc .listingblock .content,
+html.dark-theme .doc .literalblock .content {
+  background-color: #141517;
+}
+
+/* Inline code */
+html.dark-theme .doc p code,
+html.dark-theme .doc td code,
+html.dark-theme .doc li code {
+  background-color: #2c2e33;
+  color: #ff6b6b;
+  border-color: #373a40;
+}
+
+/* Syntax highlighting colors for dark mode */
+html.dark-theme .doc .hljs,
+html.dark-theme .doc .highlight {
+  background-color: #141517 !important;
+}
+
+html.dark-theme .doc .hljs-keyword,
+html.dark-theme .doc .hljs-selector-tag,
+html.dark-theme .doc .hljs-literal,
+html.dark-theme .doc .hljs-section,
+html.dark-theme .doc .hljs-link {
+  color: #c678dd;
+}
+
+html.dark-theme .doc .hljs-string,
+html.dark-theme .doc .hljs-title,
+html.dark-theme .doc .hljs-name,
+html.dark-theme .doc .hljs-type,
+html.dark-theme .doc .hljs-attribute,
+html.dark-theme .doc .hljs-symbol,
+html.dark-theme .doc .hljs-bullet,
+html.dark-theme .doc .hljs-addition,
+html.dark-theme .doc .hljs-variable,
+html.dark-theme .doc .hljs-template-tag,
+html.dark-theme .doc .hljs-template-variable {
+  color: #98c379;
+}
+
+html.dark-theme .doc .hljs-comment,
+html.dark-theme .doc .hljs-quote,
+html.dark-theme .doc .hljs-deletion,
+html.dark-theme .doc .hljs-meta {
+  color: #5c6370;
+}
+
+html.dark-theme .doc .hljs-number,
+html.dark-theme .doc .hljs-regexp,
+html.dark-theme .doc .hljs-literal,
+html.dark-theme .doc .hljs-link {
+  color: #d19a66;
+}
+
+html.dark-theme .doc .hljs-built_in,
+html.dark-theme .doc .hljs-builtin-name {
+  color: #e6c07b;
+}
+
+html.dark-theme .doc .hljs-function {
+  color: #61afef;
+}
+
 html.dark-theme table {
   border-color: #373a40;
 }
