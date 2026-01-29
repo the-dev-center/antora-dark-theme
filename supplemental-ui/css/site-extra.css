@@ -454,13 +454,17 @@ html.dark-theme .nav-panel-explore .context .version::after {
   filter: invert(1);
 }
 
-/* Component/version dropdown menu */
+/* Component/version dropdown menu and parent containers */
+html.dark-theme .nav-panel-explore .components,
+html.dark-theme .nav-panel-explore .component,
 html.dark-theme .nav-panel-explore .component-menu,
 html.dark-theme .nav-panel-explore .versions,
 html.dark-theme .nav-panel-explore .component-menu ul,
 html.dark-theme .nav-panel-explore .component-menu li,
 html.dark-theme .nav-panel-explore .versions ul,
-html.dark-theme .nav-panel-explore .versions li {
+html.dark-theme .nav-panel-explore .versions li,
+html.dark-theme .nav-panel-explore .context>*,
+html.dark-theme .nav-panel-explore .context div {
   background-color: #25262b;
   color: #c1c2c5;
 }
