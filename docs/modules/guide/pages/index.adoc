@@ -1,0 +1,71 @@
+= Getting Started
+:navtitle: Getting Started
+:description: Quick introduction to the Antora Dark Theme supplemental UI.
+
+Antora Dark Theme is a supplemental UI that adds dark mode support to your https://antora.org[Antora] documentation sites.
+It layers on top of the https://gitlab.com/antora/antora-ui-default[Antora Default UI] without requiring modifications to the base UI bundle.
+
+== Features
+
+* *Dark mode toggle* - A sun/moon icon button in the navbar that switches between light and dark themes
+* *System preference detection* - Automatically applies dark mode if your OS is set to dark mode
+* *Persistent preference* - Remembers your choice via `localStorage`
+* *No FOUC* - Dark mode is applied before page render, preventing Flash of Unstyled Content
+* *Non-invasive* - Works as a supplemental UI overlay; no need to fork or rebuild the Antora default UI bundle
+* *Comprehensive styling* - Covers navbar, navigation panels, content area, code blocks, tables, admonition blocks, footer, and more
+
+== Quick Start
+
+The fastest way to get started:
+
+[source,bash]
+----
+pnpm add -D github:the-dev-center/antora-dark-theme
+----
+
+Then add to your `antora-playbook.yml`:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
+----
+
+Build your site and you're done!
+
+[source,bash]
+----
+antora antora-playbook.yml
+----
+
+TIP: See xref:installation.adoc[] for all installation methods.
+
+== Compatibility
+
+[cols="1,2", options="header"]
+|===
+| Component | Version
+
+| Antora
+| 3.x
+
+| Antora Default UI
+| Any version (HEAD recommended)
+
+| Node.js
+| 18+
+|===
+
+== Browser Support
+
+This theme supports all modern browsers:
+
+* Chrome/Edge (latest)
+* Firefox (latest)
+* Safari (latest)
+* Opera (latest)
+
+The theme uses standard CSS and JavaScript that works in all browsers supporting `localStorage`, `classList`, and `matchMedia`.

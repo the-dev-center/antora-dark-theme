@@ -1,6 +1,7 @@
-name: theme-demo
-title: Dark Theme Demo
-version: '1.0'
-start_page: ROOT:index.adoc
+name: antora-dark-theme
+title: Antora Dark Theme
+version: "0.1"
+start_page: guide:index.adoc
 nav:
+  - modules/guide/nav.adoc
   - modules/ROOT/nav.adoc

@@ -1,10 +1,10 @@
-# Antora Playbook for building the Dark Theme Demo site
+# Antora Playbook for building the documentation site
 # This playbook is used for local development and CI builds
 
 site:
-  title: Antora Dark Theme Demo
+  title: Antora Dark Theme
   url: https://the-dev-center.github.io/antora-dark-theme
-  start_page: theme-demo::index.adoc
+  start_page: antora-dark-theme:guide:index.adoc
 
 content:
   sources:

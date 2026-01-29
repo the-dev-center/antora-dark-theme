@@ -1,0 +1,94 @@
+= Installation
+:navtitle: Installation
+:description: How to install the Antora Dark Theme in your documentation project.
+
+There are several ways to add the dark theme to your Antora project.
+
+== Method 1: Install from GitHub (Recommended)
+
+Install directly from the GitHub repository:
+
+[source,bash]
+----
+# Latest version
+pnpm add -D github:the-dev-center/antora-dark-theme
+
+# Specific version
+pnpm add -D github:the-dev-center/antora-dark-theme#v0.1.0
+----
+
+Or with npm:
+
+[source,bash]
+----
+npm install --save-dev github:the-dev-center/antora-dark-theme
+----
+
+Then configure your `antora-playbook.yml`:
+
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
+----
+
+== Method 2: Install from npm Registry
+
+If the package is published to npm:
+
+[source,bash]
+----
+pnpm add -D antora-dark-theme
+# or
+npm install --save-dev antora-dark-theme
+----
+
+Same playbook configuration as Method 1.
+
+== Method 3: Install from Release Tarball
+
+Download a specific release directly:
+
+[source,bash]
+----
+pnpm add -D https://github.com/the-dev-center/antora-dark-theme/releases/download/v0.1.0/antora-dark-theme-0.1.0.tgz
+----
+
+== Method 4: Copy supplemental-ui Folder
+
+For maximum control, copy the `supplemental-ui` folder directly into your project:
+
+. Clone or download the repository
+. Copy the `supplemental-ui` folder to your project root:
++
+[source,bash]
+----
+cp -r supplemental-ui /path/to/your/antora-project/
+----
+
+. Configure your `antora-playbook.yml`:
++
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+  supplemental_files: ./supplemental-ui
+----
+
+== Verify Installation
+
+Build your site to verify the installation:
+
+[source,bash]
+----
+antora antora-playbook.yml
+----
+
+Open the generated site in a browser.
+You should see a sun/moon toggle button in the navbar.
+Click it to switch between light and dark modes.

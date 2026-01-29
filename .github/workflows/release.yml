@@ -1,0 +1,79 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write # Required for npm trusted publishing (OIDC)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: npm # Must match the environment configured in npm trusted publisher
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Verify package version matches tag
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          if [ "$PACKAGE_VERSION" != "$TAG_VERSION" ]; then
+            echo "Error: package.json version ($PACKAGE_VERSION) does not match tag version ($TAG_VERSION)"
+            exit 1
+          fi
+
+      - name: Create tarball
+        run: pnpm pack
+
+      - name: Generate changelog for release
+        id: changelog
+        run: |
+          # Extract version from tag
+          VERSION=${GITHUB_REF#refs/tags/v}
+
+          # Try to extract changelog section for this version, or use default message
+          if [ -f "CHANGELOG.adoc" ]; then
+            # Extract section between this version and next version header
+            NOTES=$(awk "/^== $VERSION/,/^== [0-9]/" CHANGELOG.adoc | head -n -1 | tail -n +2)
+            if [ -z "$NOTES" ]; then
+              NOTES="Release v$VERSION"
+            fi
+          else
+            NOTES="Release v$VERSION"
+          fi
+
+          # Write to file to handle multiline
+          echo "$NOTES" > release_notes.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_notes.md
+          files: |
+            antora-dark-theme-*.tgz
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm (trusted publishing)
+        if: ${{ !contains(github.ref, '-') }}
+        run: npm publish --access public --provenance

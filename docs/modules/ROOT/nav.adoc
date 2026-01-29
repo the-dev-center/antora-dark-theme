@@ -1,4 +1,5 @@
-* xref:index.adoc[Home]
+.Theme Demo
+* xref:index.adoc[Demo Home]
 * xref:typography.adoc[Typography]
 * xref:code-blocks.adoc[Code Blocks]
 * xref:admonitions.adoc[Admonitions]

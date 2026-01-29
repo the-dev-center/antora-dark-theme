@@ -1,0 +1,7 @@
+.Documentation
+* xref:index.adoc[Getting Started]
+* xref:installation.adoc[Installation]
+* xref:configuration.adoc[Configuration]
+* xref:customization.adoc[Customization]
+* xref:how-it-works.adoc[How It Works]
+* xref:troubleshooting.adoc[Troubleshooting]
