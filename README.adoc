@@ -61,12 +61,36 @@ antora antora-playbook.yml
 
 You can also install this theme as a dev dependency:
 
+[tabs]
+====
+npm::
++
+[source,bash]
+----
+npm install --save-dev antora-dark-theme
+----
+
+pnpm::
++
 [source,bash]
 ----
 pnpm add -D antora-dark-theme
-# or
-npm install --save-dev antora-dark-theme
 ----
+
+Yarn::
++
+[source,bash]
+----
+yarn add -D antora-dark-theme
+----
+
+Bun::
++
+[source,bash]
+----
+bun add -D antora-dark-theme
+----
+====
 
 Then reference the supplemental UI from `node_modules`:
 

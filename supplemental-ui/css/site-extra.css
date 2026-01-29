@@ -81,7 +81,7 @@ html.dark-theme .toc .toc-menu h3 {
   color: #ffffff;
 }
 
-html.dark-theme .nav .nav-item.is-current-page > .nav-link {
+html.dark-theme .nav .nav-item.is-current-page>.nav-link {
   color: #ffffff;
 }
 
@@ -122,14 +122,14 @@ html.dark-theme .tableblock {
 
 /* All block types - more specific selectors for Antora */
 html.dark-theme .doc .sidebarblock,
-html.dark-theme .doc .sidebarblock > .content {
+html.dark-theme .doc .sidebarblock>.content {
   background-color: #25262b !important;
   background: #25262b !important;
   border-color: #373a40;
 }
 
 html.dark-theme .doc .exampleblock,
-html.dark-theme .doc .exampleblock > .content {
+html.dark-theme .doc .exampleblock>.content {
   background-color: #1f2125 !important;
   background: #1f2125 !important;
   border-color: #373a40;
@@ -137,7 +137,7 @@ html.dark-theme .doc .exampleblock > .content {
 
 html.dark-theme .doc .quoteblock,
 html.dark-theme .doc .quoteblock blockquote,
-html.dark-theme .doc .quoteblock > blockquote {
+html.dark-theme .doc .quoteblock>blockquote {
   background-color: #1f2125 !important;
   background: #1f2125 !important;
   border-color: #4dabf7;
@@ -150,7 +150,7 @@ html.dark-theme .doc .quoteblock cite {
 
 html.dark-theme .doc .verseblock,
 html.dark-theme .doc .verseblock pre,
-html.dark-theme .doc .verseblock > pre {
+html.dark-theme .doc .verseblock>pre {
   background-color: #1f2125 !important;
   background: #1f2125 !important;
   border-color: #373a40;
@@ -158,7 +158,7 @@ html.dark-theme .doc .verseblock > pre {
 }
 
 html.dark-theme .doc .literalblock,
-html.dark-theme .doc .literalblock > .content,
+html.dark-theme .doc .literalblock>.content,
 html.dark-theme .doc .literalblock pre {
   background-color: #141517 !important;
   background: #141517 !important;
@@ -166,14 +166,14 @@ html.dark-theme .doc .literalblock pre {
 }
 
 html.dark-theme .doc .listingblock,
-html.dark-theme .doc .listingblock > .content {
+html.dark-theme .doc .listingblock>.content {
   background-color: #141517 !important;
   background: #141517 !important;
   border-color: #373a40;
 }
 
 html.dark-theme .doc .openblock,
-html.dark-theme .doc .openblock > .content {
+html.dark-theme .doc .openblock>.content {
   background-color: transparent !important;
   background: transparent !important;
   border-color: #373a40;
@@ -183,40 +183,40 @@ html.dark-theme .doc .openblock > .content {
 html.dark-theme .doc details,
 html.dark-theme .doc details[open],
 html.dark-theme .doc .exampleblock[%collapsible],
-html.dark-theme .doc details > summary {
+html.dark-theme .doc details>summary {
   background-color: #1f2125 !important;
   background: #1f2125 !important;
   border-color: #373a40;
   color: #c1c2c5;
 }
 
-html.dark-theme .doc details > summary {
+html.dark-theme .doc details>summary {
   cursor: pointer;
 }
 
-html.dark-theme .doc details > .content {
+html.dark-theme .doc details>.content {
   background-color: #1f2125 !important;
   background: #1f2125 !important;
 }
 
 /* Block titles */
-html.dark-theme .doc .sidebarblock > .content > .title,
-html.dark-theme .doc .exampleblock > .content > .title,
-html.dark-theme .doc .quoteblock > .title,
-html.dark-theme .doc .verseblock > .title,
-html.dark-theme .doc .literalblock > .title,
-html.dark-theme .doc .listingblock > .title,
-html.dark-theme .doc .openblock > .title {
+html.dark-theme .doc .sidebarblock>.content>.title,
+html.dark-theme .doc .exampleblock>.content>.title,
+html.dark-theme .doc .quoteblock>.title,
+html.dark-theme .doc .verseblock>.title,
+html.dark-theme .doc .literalblock>.title,
+html.dark-theme .doc .listingblock>.title,
+html.dark-theme .doc .openblock>.title {
   color: #ffffff;
 }
 
 /* Admonition blocks - more specific selectors */
 html.dark-theme .doc .admonitionblock,
-html.dark-theme .doc .admonitionblock > table,
-html.dark-theme .doc .admonitionblock > table > tbody > tr,
-html.dark-theme .doc .admonitionblock > table > tbody > tr > td,
-html.dark-theme .doc .admonitionblock > table > tbody > tr > td.content,
-html.dark-theme .doc .admonitionblock > table > tbody > tr > td.icon {
+html.dark-theme .doc .admonitionblock>table,
+html.dark-theme .doc .admonitionblock>table>tbody>tr,
+html.dark-theme .doc .admonitionblock>table>tbody>tr>td,
+html.dark-theme .doc .admonitionblock>table>tbody>tr>td.content,
+html.dark-theme .doc .admonitionblock>table>tbody>tr>td.icon {
   background-color: #25262b !important;
   background: #25262b !important;
 }
@@ -230,37 +230,37 @@ html.dark-theme .doc .admonitionblock .title {
 }
 
 /* Specific admonition types with subtle accent colors */
-html.dark-theme .doc .admonitionblock.tip > table,
-html.dark-theme .doc .admonitionblock.tip > table > tbody > tr,
-html.dark-theme .doc .admonitionblock.tip > table > tbody > tr > td {
+html.dark-theme .doc .admonitionblock.tip>table,
+html.dark-theme .doc .admonitionblock.tip>table>tbody>tr,
+html.dark-theme .doc .admonitionblock.tip>table>tbody>tr>td {
   background-color: #1a2a1a !important;
   background: #1a2a1a !important;
 }
 
-html.dark-theme .doc .admonitionblock.note > table,
-html.dark-theme .doc .admonitionblock.note > table > tbody > tr,
-html.dark-theme .doc .admonitionblock.note > table > tbody > tr > td {
+html.dark-theme .doc .admonitionblock.note>table,
+html.dark-theme .doc .admonitionblock.note>table>tbody>tr,
+html.dark-theme .doc .admonitionblock.note>table>tbody>tr>td {
   background-color: #1a1a2a !important;
   background: #1a1a2a !important;
 }
 
-html.dark-theme .doc .admonitionblock.warning > table,
-html.dark-theme .doc .admonitionblock.warning > table > tbody > tr,
-html.dark-theme .doc .admonitionblock.warning > table > tbody > tr > td {
+html.dark-theme .doc .admonitionblock.warning>table,
+html.dark-theme .doc .admonitionblock.warning>table>tbody>tr,
+html.dark-theme .doc .admonitionblock.warning>table>tbody>tr>td {
   background-color: #2a2a1a !important;
   background: #2a2a1a !important;
 }
 
-html.dark-theme .doc .admonitionblock.caution > table,
-html.dark-theme .doc .admonitionblock.caution > table > tbody > tr,
-html.dark-theme .doc .admonitionblock.caution > table > tbody > tr > td {
+html.dark-theme .doc .admonitionblock.caution>table,
+html.dark-theme .doc .admonitionblock.caution>table>tbody>tr,
+html.dark-theme .doc .admonitionblock.caution>table>tbody>tr>td {
   background-color: #2a1a1a !important;
   background: #2a1a1a !important;
 }
 
-html.dark-theme .doc .admonitionblock.important > table,
-html.dark-theme .doc .admonitionblock.important > table > tbody > tr,
-html.dark-theme .doc .admonitionblock.important > table > tbody > tr > td {
+html.dark-theme .doc .admonitionblock.important>table,
+html.dark-theme .doc .admonitionblock.important>table>tbody>tr,
+html.dark-theme .doc .admonitionblock.important>table>tbody>tr>td {
   background-color: #2a1a2a !important;
   background: #2a1a2a !important;
 }
@@ -440,7 +440,46 @@ html.dark-theme .nav-menu-toggle {
   filter: invert(1);
 }
 
+/* Component/version selector in navigation */
+html.dark-theme .nav-panel-explore .context .version {
+  color: #909296;
+}
+
+html.dark-theme .nav-panel-explore .context .version:hover {
+  color: #c1c2c5;
+}
+
 /* Chevron icon in component/version selector */
 html.dark-theme .nav-panel-explore .context .version::after {
   filter: invert(1);
+}
+
+/* Component/version dropdown menu */
+html.dark-theme .nav-panel-explore .component-menu,
+html.dark-theme .nav-panel-explore .versions,
+html.dark-theme .nav-panel-explore .component-menu ul,
+html.dark-theme .nav-panel-explore .component-menu li,
+html.dark-theme .nav-panel-explore .versions ul,
+html.dark-theme .nav-panel-explore .versions li {
+  background-color: #25262b;
+  color: #c1c2c5;
+}
+
+html.dark-theme .nav-panel-explore .component-menu a,
+html.dark-theme .nav-panel-explore .versions a {
+  color: #c1c2c5;
+}
+
+html.dark-theme .nav-panel-explore .component-menu a:hover,
+html.dark-theme .nav-panel-explore .versions a:hover,
+html.dark-theme .nav-panel-explore .component-menu li:hover,
+html.dark-theme .nav-panel-explore .versions li:hover {
+  background-color: #2c2e33;
+  color: #ffffff;
+}
+
+html.dark-theme .nav-panel-explore .component-menu .is-current,
+html.dark-theme .nav-panel-explore .versions .is-current {
+  background-color: #2c2e33;
+  color: #ffffff;
 }
