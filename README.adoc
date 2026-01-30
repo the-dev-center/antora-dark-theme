@@ -37,9 +37,23 @@ Your support helps the Antora team prioritize this feature!
 
 == Quick Start
 
-=== Method 1: Copy supplemental-ui folder
+=== Method 1: Use pre-built bundle (Recommended)
 
-The simplest approach is to copy the `supplemental-ui` folder into your Antora documentation project.
+The easiest way to use this theme is to point your Antora playbook directly to the latest pre-built UI bundle. This includes the Antora Default UI plus all dark mode enhancements.
+
+. Configure your `antora-playbook.yml` to use the release bundle:
++
+[source,yaml]
+----
+ui:
+  bundle:
+    url: https://github.com/the-dev-center/antora-dark-theme/releases/latest/download/ui-bundle.zip
+    snapshot: true
+----
+
+=== Method 2: Copy supplemental-ui folder
+
+If you want to customize the dark mode styles or logic locally, you can copy the `supplemental-ui` folder into your project.
 
 . Copy the `supplemental-ui` folder to your project root:
 +
@@ -48,7 +62,7 @@ The simplest approach is to copy the `supplemental-ui` folder into your Antora d
 cp -r supplemental-ui /path/to/your/antora-project/
 ----
 
-. Configure your `antora-playbook.yml` to use the supplemental files:
+. Configure your `antora-playbook.yml` to use the supplemental files alongside the default UI:
 +
 [source,yaml]
 ----
@@ -59,16 +73,9 @@ ui:
   supplemental_files: ./supplemental-ui
 ----
 
-. Build your site:
-+
-[source,bash]
-----
-antora antora-playbook.yml
-----
+=== Method 3: Use as npm dependency
 
-=== Method 2: Use as npm dependency
-
-You can also install this theme as a dev dependency:
+You can also install this theme as a dev dependency. This is useful for version tracking and easy updates within your project's ecosystem.
 
 [tabs]
 ====

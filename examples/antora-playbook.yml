@@ -19,12 +19,9 @@ content:
 
 ui:
   bundle:
-    # Use the official Antora default UI bundle
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    # Use the pre-built Antora Dark Theme bundle
+    url: https://github.com/the-dev-center/antora-dark-theme/releases/latest/download/ui-bundle.zip
     snapshot: true
-  # If using npm: ./node_modules/antora-dark-theme/supplemental-ui
-  # If copied directly: ./supplemental-ui
-  supplemental_files: ./node_modules/antora-dark-theme/supplemental-ui
 
 output:
   dir: ./build/site
