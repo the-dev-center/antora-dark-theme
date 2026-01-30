@@ -63,12 +63,26 @@ jobs:
           # Write to file to handle multiline
           echo "$NOTES" > release_notes.md
 
+      - name: Build Antora UI Bundle
+        run: |
+          # Fetch the default UI bundle to use as a base
+          curl -L -o default-ui-bundle.zip https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+          # Create a temporary directory to merge files
+          mkdir -p build/ui-bundle
+          unzip default-ui-bundle.zip -d build/ui-bundle
+          cp -r supplemental-ui/* build/ui-bundle/
+          # Create the new bundle
+          cd build/ui-bundle
+          zip -r ../../ui-bundle.zip .
+          cd ../..
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           body_path: release_notes.md
           files: |
             antora-dark-theme-*.tgz
+            ui-bundle.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
